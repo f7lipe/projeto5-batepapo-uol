@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Bate Papo UOL</title>
+    <!--google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--Navbar com logo e no canto esquerdo-->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="img/logo_vertical.png" alt="logo do uol" srcset="">
+            </div>
+            <button class="menu">
+                <ion-icon name="people"></ion-icon></button>
+        </nav>
+    </header>
+    <!--Parte principal com as mensagens da conversa-->
+    <main>
+        <section class="messages">
+            <div class="message emphasis">
+                <span class="time">(09:21:45)</span>
+                <p class="message-content"> <b>João</b> entrou na sala...</p>
+            </div>
+
+            <div class="message emphasis">
+                <span class="time">(09:21:45)</span>
+                <p class="message-content"> <b>João</b> entrou na sala...</p>
+            </div>
+
+            <div class="message alert">
+                <span class="time">(09:21:45)</span>
+                <p class="message-content"> <b>João</b> entrou na sala...</p>
+            </div>
+
+            <div class="message emphasis">
+                <span class="time">(09:21:45)</span>
+                <p class="message-content"> <b>João</b> entrou na sala...</p>
+            </div>
+
+            <div class="message emphasis">
+                <span class="time">(09:21:45)</span>
+                <p class="message-content"> <b>João</b> entrou na sala...</p>
+            </div>
+
+            <div class="message emphasis">
+                <span class="time">(09:21:45)</span>
+                <p class="message-content"> <b>João</b> entrou na sala...</p>
+            </div>
+        </section>
+
+        <!--Sidebar-->
+        <aside class="sidebar">
+            <h4>Escolha alguém</h4>
+            <div class="settings">
+                <div class="personal-settings">
+                    <div class="setting">
+                        <ion-icon name="people"></ion-icon>
+                        <span>Todos</span>
+                    </div>
+
+                    <div class="setting">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                        <span>João</span>
+                    </div>
+
+                    <div class="setting">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                        <span>Maria</span>
+                    </div>
+                </div>
+                <h4>Escolha a visibilidade</h4>
+                <div class="visibity-settings">
+                    <div class="setting">
+                        <ion-icon name="lock-open"></ion-icon>
+                        <span>Publico</span>
+                    </div>
+
+                    <div class="setting">
+                        <ion-icon name="lock-closed"></ion-icon>
+                        <span>Reservadamente</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+    <!--Barra com input e botão de enviar-->
+    <footer>
+        <div class="message-composer">
+             <input type="text" placeholder="Escreva aqui...">
+            <button class="send">
+                <ion-icon name="paper-plane-outline"></ion-icon>
+            </button>
+        </div>
+    </footer>
+
+    <!--ion icons-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</body>
+</html>
