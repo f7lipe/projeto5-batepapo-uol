@@ -98,11 +98,11 @@ footer .message-composer{
     margin-right: 8px;
 }
 
-.message.emphasis{
+.message.status{
     background: #DCDCDC;
 }
 
-.message.alert{
+.message.private_message{
     background: #FFDEDE;
 }
 
