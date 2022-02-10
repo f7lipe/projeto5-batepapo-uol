@@ -23,6 +23,7 @@ nav {
   
     height: 80px;
     border-bottom: 1px solid #e0e0e0;
+    background: white;
 }
 
 nav .logo{
@@ -85,6 +86,7 @@ footer .message-composer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background: white;
 }
 
 .message{
