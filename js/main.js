@@ -59,13 +59,21 @@ function renderContacts(contacts){
     const data = contacts.data
     data.forEach(contact => {
         const newContact =  `    
-        <div class="setting">
+        <div class="setting" onClick="selectContact(this)">
         <ion-icon name="person-circle-outline"></ion-icon>
                 <span>${contact.from}</span>
         </div>`
         document.querySelector('.setting').innerHTML += newContact
     });
 }
+
+function selectContact(div){
+    const span = div.getElementsByTagName("span")
+    const contactName = span[0].innerText
+    RECIPIENT = contactName
+}
+
+//let a = {"from":"gfg","to":"Todos","text":"sai da sala...","type":"status","time":"04:21:30"}
 
 
 loadAPIContent()
