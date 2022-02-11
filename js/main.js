@@ -3,33 +3,45 @@ const STATUS_MESSAGE = "status"
 const PUBLIC_MESSAGE = "message"
 const PRIVATE_MESSAGE = "private_message"
 
-const MESSAGES_REPO = "https://mock-api.driven.com.br/api/v4/uol/messages"
+const API_REPO = "https://mock-api.driven.com.br/api/v4/uol/messages"
 
+let VISIBILITY = 'public' 
+let CURRENT_USER = null
+let RECIPIENT = null
 
-function loadMessages(){
-const messages = axios.get(MESSAGES_REPO)
-messages.then(filterMessage)
+function loadAPIContent(){
+const content = axios.get(API_REPO)
+content.then(filterMessages)
+content.then(renderContacts)
 }
 
-function filterMessage(message){
-    const messageData = message.data
+function filterMessages(messages){
+    const messageData = messages.data
     let messageType = null
+    let messageBody = null
     let filtered = []
 
     messageData.forEach(message => {
-        if(message.type === STATUS_MESSAGE){
+        const isStatusMessage = message.type === STATUS_MESSAGE
+        const isPublicMessage = message.type === PUBLIC_MESSAGE
+        const isPrivateMesssage = message.type === PRIVATE_MESSAGE
+
+        if(isStatusMessage){
             messageType = STATUS_MESSAGE
+            messageBody = `${message.text}`
         } 
-        if(message.type === PUBLIC_MESSAGE){
+        if(isPublicMessage){
             messageType = PUBLIC_MESSAGE 
+            messageBody = `para <b>${message.to}</b>: ${message.text} `
         }
-        if(message.type === PRIVATE_MESSAGE){
+        if(isPrivateMesssage & message.from === RECIPIENT){
             messageType = PRIVATE_MESSAGE
+            messageBody = `reservadamente para <b>${message.to}</b>: ${message.text} `
         }
         const filteredMessage = `
             <div class="message ${messageType}">
                 <span class="time">(${message.time})</span>
-                <p class="message-content"> <b>${message.from}</b> ${message.text}</p>
+                <p class="message-content"> <b>${message.from}</b> ${messageBody}</p>
             </div>`
 
         filtered.push(filteredMessage)
@@ -43,4 +55,17 @@ function renderMessages(messages){
         document.querySelector('.messages').innerHTML += message)
 }
 
-loadMessages()
+function renderContacts(contacts){
+    const data = contacts.data
+    data.forEach(contact => {
+        const newContact =  `    
+        <div class="setting">
+        <ion-icon name="person-circle-outline"></ion-icon>
+                <span>${contact.from}</span>
+        </div>`
+        document.querySelector('.setting').innerHTML += newContact
+    });
+}
+
+
+loadAPIContent()

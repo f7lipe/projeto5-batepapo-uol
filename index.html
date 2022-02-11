@@ -19,14 +19,14 @@
             <div class="logo">
                 <img src="img/logo_vertical.png" alt="logo do uol" srcset="">
             </div>
-            <button class="menu">
+            <button class="menu" onclick="toggleSidebar()">
                 <ion-icon name="people"></ion-icon></button>
         </nav>
     </header>
     <!--Parte principal com as mensagens da conversa-->
     <main>
         <section class="messages">
-
+            <!-- Será implementado dinamicamente-->
         </section>
 
         <!--Sidebar-->
@@ -44,10 +44,6 @@
                         <span>João</span>
                     </div>
 
-                    <div class="setting">
-                        <ion-icon name="person-circle-outline"></ion-icon>
-                        <span>Maria</span>
-                    </div>
                 </div>
                 <h4>Escolha a visibilidade</h4>
                 <div class="visibity-settings">
@@ -74,9 +70,9 @@
         </div>
     </footer>
 
-    <!--ion icons-->
+    <!--scripts-->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
