@@ -3,14 +3,15 @@ const STATUS_MESSAGE = "status"
 const PUBLIC_MESSAGE = "message"
 const PRIVATE_MESSAGE = "private_message"
 
-const API_REPO = "https://mock-api.driven.com.br/api/v4/uol/messages"
+const MESSAGES_REPO = "https://mock-api.driven.com.br/api/v4/uol/messages"
+const CLIENTS_REPO = "https://mock-api.driven.com.br/api/v4/uol/participants"
 
 let VISIBILITY = 'public' 
 let CURRENT_USER = null
 let RECIPIENT = null
 
-function loadAPIContent(){
-const content = axios.get(API_REPO)
+function loadMessages(){
+const content = axios.get(MESSAGES_REPO)
 content.then(filterMessages)
 content.then(renderContacts)
 }
@@ -34,7 +35,7 @@ function filterMessages(messages){
             messageType = PUBLIC_MESSAGE 
             messageBody = `para <b>${message.to}</b>: ${message.text} `
         }
-        if(isPrivateMesssage & message.from === RECIPIENT){
+        if(isPrivateMesssage && message.from === RECIPIENT){
             messageType = PRIVATE_MESSAGE
             messageBody = `reservadamente para <b>${message.to}</b>: ${message.text} `
         }
@@ -73,7 +74,36 @@ function selectContact(div){
     RECIPIENT = contactName
 }
 
+function askUserName(){
+    return prompt('Qual seu lindo nome?')
+}
+
+function verifyUserName(name){
+    const user = {name: name()}
+    const promise = axios.post(CLIENTS_REPO, user)
+    promise.then(() =>{
+        CURRENT_USER = user.name
+        loadMessages()
+        console.log(CURRENT_USER)
+    })
+    promise.catch(handleError)
+}
+
+function handleError(error){
+    const errorCode = error.response.status;
+    if (errorCode === 400){
+        alert('Esse nome já está em uso. Entre com outro nome')
+        verifyUserName(askUserName)
+    } else {
+        alert(`O servidor retornou com o seguinte erro: ${errorCode}. 
+        Informe-o para o técnico de suporte.`)
+    }
+}
+
+
+
+verifyUserName(askUserName)
+
 //let a = {"from":"gfg","to":"Todos","text":"sai da sala...","type":"status","time":"04:21:30"}
 
 
-loadAPIContent()
