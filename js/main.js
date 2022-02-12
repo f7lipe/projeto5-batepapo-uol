@@ -60,7 +60,7 @@ function renderContacts(contacts){
     const data = contacts.data
     data.forEach(contact => {
         const newContact =  `    
-        <div class="setting" onClick="selectContact(this)">
+        <div class="setting contact" onClick="selectOnSidebar(this)">
         <ion-icon name="person-circle-outline"></ion-icon>
                 <span>${contact.from}</span>
         </div>`
@@ -68,10 +68,27 @@ function renderContacts(contacts){
     });
 }
 
+/*
 function selectContact(div){
     const span = div.getElementsByTagName("span")
     const contactName = span[0].innerText
     RECIPIENT = contactName
+}
+*/
+
+function selectOnSidebar(div){
+    const isContact = div.classList.contains('contact')
+    const isVisibility = div.classList.contains('visibility')
+    const span = div.getElementsByTagName("span")
+
+    if (isContact){
+        const contactName = span[0].innerText
+        RECIPIENT = contactName
+    }
+    if (isVisibility){
+        const visibility = span[0].innerText
+        VISIBILITY = visibility
+    }
 }
 
 function askUserName(){
