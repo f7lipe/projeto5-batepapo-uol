@@ -29,40 +29,45 @@
             <!-- Será implementado dinamicamente-->
         </section>
 
-        <!--Sidebar-->
-        <aside class="sidebar">
-            <h4>Escolha alguém</h4>
-            <div class="settings">
-                <div class="personal-settings">
-                    <div class="setting contact">
-                        <ion-icon name="people"></ion-icon>
-                        <span>Todos</span>
+                    <!--Sidebar-->
+                    <div class="sidebar-background hidden" onclick=" toggleSidebar()">
+                        
+                        <aside class="sidebar">
+                            <h4>Escolha alguém</h4>
+                            <div class="settings">
+                                <div class="personal-settings">
+                                    <div class="setting contact">
+                                        <ion-icon name="people"></ion-icon>
+                                        <span>Todos</span>
+                                    </div>
+                                </div>
+                                <h4>Escolha a visibilidade</h4>
+                                <div class="visibity-settings">
+                                    <div class="setting visibility" onclick="selectOnSidebar(this)">
+                                        <ion-icon name="lock-open"></ion-icon>
+                                        <span>Publico</span>
+                                    </div>
+                
+                                    <div class="setting visbility" onclick="selectOnSidebar(this)">
+                                        <ion-icon name="lock-closed"></ion-icon>
+                                        <span>Reservadamente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
                     </div>
-                </div>
-                <h4>Escolha a visibilidade</h4>
-                <div class="visibity-settings">
-                    <div class="setting visibility" onclick="selectOnSidebar(this)">
-                        <ion-icon name="lock-open"></ion-icon>
-                        <span>Publico</span>
-                    </div>
-
-                    <div class="setting visbility" onclick="selectOnSidebar(this)">
-                        <ion-icon name="lock-closed"></ion-icon>
-                        <span>Reservadamente</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
     </main>
     <!--Barra com input e botão de enviar-->
     <footer>
         <div class="message-composer">
              <input type="text" placeholder="Escreva aqui...">
-            <button class="send">
+            <button class="send" onclick="sendMessage()" data-identifier="send-message">
                 <ion-icon name="paper-plane-outline"></ion-icon>
             </button>
         </div>
     </footer>
+
+
 
     <!--scripts-->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
